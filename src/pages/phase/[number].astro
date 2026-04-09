@@ -15,8 +15,9 @@ if (!phase) {
   return Astro.redirect('/abg/');
 }
 
-const prevPhase = phases.find((p) => p.number === phase.number - 1);
-const nextPhase = phases.find((p) => p.number === phase.number + 1);
+const phaseIndex = phase.number - 1;
+const prevPhase = phaseIndex > 0 ? phases[phaseIndex - 1] : undefined;
+const nextPhase = phaseIndex < phases.length - 1 ? phases[phaseIndex + 1] : undefined;
 ---
 
 <Layout title={`Phase ${phase.number}: ${phase.title} — ABG Interpretation`}>
